@@ -1,0 +1,48 @@
+[diff]
+	tool = meld
+[difftool "p4merge"]
+	cmd = p4merge $BASE $LOCAL
+    trustExitCode = false
+[merge]
+	tool = p4merge
+[mergetool "p4merge"]
+	cmd = p4merge $BASE $LOCAL $REMOTE $MERGED
+    trustExitCode = false
+[user]
+    email = john.dahlberg@live.com
+	name = johndah
+[push]
+    default = upstream
+   
+[core]
+    editor = code --wait
+
+[color "status"]
+  added = green
+  changed = yellow bold
+  untracked = cyan
+  deleted = red bold
+
+  [color "branch"]
+  current = green bold
+  local = cyan
+  remote = green
+  
+[alias]
+  dt = difftool --dir-diff
+  st = status -uno
+  co = checkout
+  cp = cherry-pick
+  cm = commit -m
+  ca = commit --amend --no-edit
+  br = branch
+  l = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  hist = log --pretty=format:'%C(white)[%ad]%C(reset) %C(green)[%h]%C(reset) | %C(cyan)%s %C(bold red){{%an}}%C(reset) %C(blue)%d%C(reset)' --graph --date=short
+  type = cat-file -t
+  dump = cat-file -p
+[commit]
+	template = /home/john/.gitmessage
+[safe]
+	directory = /Storage/Hassio/home-automation
+[init]
+	defaultBranch = main
