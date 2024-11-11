@@ -5,6 +5,14 @@ PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\
 export LC_ALL="en_US.UTF-8"
 export LANGUAGE=en_US
 
+# append to the history file, don't overwrite it
+shopt -s histappend
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+#
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=20000
+HISTFILESIZE=40000
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/john/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
